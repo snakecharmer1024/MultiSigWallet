@@ -168,6 +168,7 @@ contract MultiSigWallet {
     /// @return Returns hash identifying a transaction.
     function submitTransaction(address destination, uint value, bytes data, uint nonce)
         public
+        ownerExists(msg.sender)
         returns (bytes32 transactionHash)
     {
         transactionHash = addTransaction(destination, value, data, nonce);
